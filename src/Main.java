@@ -3,9 +3,7 @@ import entities.Pet;
 import enums.Sexo;
 import enums.Tipo;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,6 +45,9 @@ public class Main {
                     Pet pet = new Pet(nome, Tipo.valueOf(tipo.toUpperCase()), Sexo.valueOf(sexo.toUpperCase()), numeroCasa, cidade, rua, idade, peso, raca);
                     salvarPet(pet);
                 }
+                if (opc == 6){
+                    break;
+                }
             } catch (Exception e){
                 e.printStackTrace();
                 continue;
@@ -76,9 +77,8 @@ public class Main {
         String data = dtf.format(ldt);
         String nomePasta = data+"-"+pet.getNome().toUpperCase().replace(" ", "")+".txt";
         Path path = Paths.get("petsCadastrados\\" + nomePasta);
-        try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path))){
-            oos.writeObject(pet.toString());
-            oos.flush();
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path.toString()))){
+            bw.write(pet.toString());
         }catch (Exception e){
             e.printStackTrace();
         }

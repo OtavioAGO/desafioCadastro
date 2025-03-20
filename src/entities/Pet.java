@@ -74,6 +74,6 @@ public class Pet {
 
     @Override
     public String toString() {
-        return "1 - "+nome+"\n2 - "+tipo+"\n3 - "+sexo+"\n4 - "+getEndereco()+"\n5 - "+getIdade()+"\n6 - "+getPeso()+"\n7 - "+getRaca();
+        return "1 - "+nome+System.lineSeparator()+"2 - "+tipo+System.lineSeparator()+"3 - "+sexo+System.lineSeparator()+"4 - "+getEndereco()+System.lineSeparator()+"5 - "+getIdade()+System.lineSeparator()+"6 - "+getPeso()+System.lineSeparator()+"7 - "+getRaca();
     }
 }
