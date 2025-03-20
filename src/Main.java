@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -23,27 +24,38 @@ public class Main {
                     continue;
                 }
                 if (opc == 1){
-                    leArquivo();
-                    System.out.println("Nome e sobrenome:");
-                    String nome = sc.nextLine();
-                    System.out.println("Tipo:");
-                    String tipo = sc.nextLine();
-                    System.out.println("Sexo:");
-                    String sexo = sc.nextLine();
-                    System.out.println("Rua:");
-                    String rua = sc.nextLine();
-                    System.out.println("Numero da casa:");
-                    String numeroCasa = sc.nextLine();
-                    System.out.println("Cidade:");
-                    String cidade = sc.nextLine();
-                    System.out.println("Idade:");
-                    String idade = sc.nextLine();
-                    System.out.println("Peso:");
-                    String peso = sc.nextLine();
-                    System.out.println("Raça:");
-                    String raca = sc.nextLine();
-                    Pet pet = new Pet(nome, Tipo.valueOf(tipo.toUpperCase()), Sexo.valueOf(sexo.toUpperCase()), numeroCasa, cidade, rua, idade, peso, raca);
-                    salvarPet(pet);
+                    try(BufferedReader bf = new BufferedReader(new FileReader("formulario.txt"))) {
+                        String line;
+                        ArrayList<String> construtor = new ArrayList<>();
+                        int count = 0;
+                        while ((line = bf.readLine()) != null){
+                            if (line.isBlank()){
+                                continue;
+                            }
+                            System.out.println(line);
+                            count++;
+                            if (count == 4){
+                                System.out.println("rua: ");
+                                String rua = sc.nextLine();
+                                construtor.add(rua);
+                                System.out.println("numero da casa: ");
+                                String numeroCasa = sc.nextLine();
+                                construtor.add(numeroCasa);
+                                System.out.println("cidade: ");
+                                String cidade = sc.nextLine();
+                                construtor.add(cidade);
+                                continue;
+                            }
+                            String c = sc.nextLine();
+                            construtor.add(c);
+                        }
+                        System.out.println(construtor);
+                        Pet pet = new Pet(construtor.get(0), Tipo.valueOf(construtor.get(1).toUpperCase()), Sexo.valueOf(construtor.get(2).toUpperCase()), construtor.get(3), construtor.get(4),
+                                construtor.get(5), construtor.get(6), construtor.get(7), construtor.get(8));
+                        salvarPet(pet);
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
                 }
                 if (opc == 6){
                     break;
@@ -53,14 +65,6 @@ public class Main {
                 continue;
             }
 
-        }
-    }
-    public static void leArquivo(){
-        Path path = Paths.get("formulario.txt");
-        try(BufferedReader reader = Files.newBufferedReader(path)){
-            reader.lines().forEach(System.out::println);
-        }catch (IOException e){
-            e.printStackTrace();
         }
     }
     public static void exibeMenu(){

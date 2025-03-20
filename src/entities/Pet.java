@@ -19,7 +19,7 @@ public class Pet {
 
     private final String NAO_INFORMADO = "NÃO INFORMADO";
 
-    public Pet(String nome, Tipo tipo, Sexo sexo, String numeroCasa, String cidade, String rua, String idade, String peso, String raca) {
+    public Pet(String nome, Tipo tipo, Sexo sexo, String rua, String numeroCasa, String cidade,  String idade, String peso, String raca) {
         Pattern p = Pattern.compile("[\\W\\d]");
         Matcher caractereEspecial = p.matcher(nome);
         if (caractereEspecial.find()) {
