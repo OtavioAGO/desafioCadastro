@@ -1,10 +1,16 @@
 
+import entities.Pet;
+import enums.Sexo;
+import enums.Tipo;
+
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.InputMismatchException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -20,10 +26,29 @@ public class Main {
                 }
                 if (opc == 1){
                     leArquivo();
-
+                    System.out.println("Nome e sobrenome:");
+                    String nome = sc.nextLine();
+                    System.out.println("Tipo:");
+                    String tipo = sc.nextLine();
+                    System.out.println("Sexo:");
+                    String sexo = sc.nextLine();
+                    System.out.println("Rua:");
+                    String rua = sc.nextLine();
+                    System.out.println("Numero da casa:");
+                    String numeroCasa = sc.nextLine();
+                    System.out.println("Cidade:");
+                    String cidade = sc.nextLine();
+                    System.out.println("Idade:");
+                    String idade = sc.nextLine();
+                    System.out.println("Peso:");
+                    String peso = sc.nextLine();
+                    System.out.println("Raça:");
+                    String raca = sc.nextLine();
+                    Pet pet = new Pet(nome, Tipo.valueOf(tipo.toUpperCase()), Sexo.valueOf(sexo.toUpperCase()), numeroCasa, cidade, rua, idade, peso, raca);
+                    salvarPet(pet);
                 }
             } catch (Exception e){
-                System.out.println("Caractere invalido.");
+                e.printStackTrace();
                 continue;
             }
 
@@ -45,5 +70,17 @@ public class Main {
         System.out.println("5.Listar pets por algum critério (idade, nome, raça)");
         System.out.println("6.Sair");
     }
-    public
+    public static void salvarPet(Pet pet){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
+        LocalDateTime ldt = LocalDateTime.now();
+        String data = dtf.format(ldt);
+        String nomePasta = data+"-"+pet.getNome().toUpperCase().replace(" ", "")+".txt";
+        Path path = Paths.get("petsCadastrados\\" + nomePasta);
+        try(ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path))){
+            oos.writeObject(pet.toString());
+            oos.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
