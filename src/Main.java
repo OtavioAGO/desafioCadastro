@@ -4,7 +4,6 @@ import enums.Sexo;
 import enums.Tipo;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -19,7 +18,7 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             try {
                 int opc = Integer.parseInt(sc.nextLine());
-                if (opc <= 0){
+                if (opc <= 0 || opc > 6){
                     System.out.println("Opção invalida.");
                     continue;
                 }
@@ -57,14 +56,18 @@ public class Main {
                         e.printStackTrace();
                     }
                 }
+                if (opc == 4){
+                    Pet.toStringList(Pet.getAnimaisCadastrados());
+                }
+                if (opc == 5 ){
+                    ArrayList<Pet> petsFiltrados = new ArrayList<>();
+                }
                 if (opc == 6){
                     break;
                 }
             } catch (Exception e){
                 e.printStackTrace();
-                continue;
             }
-
         }
     }
     public static void exibeMenu(){
