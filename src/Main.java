@@ -48,16 +48,16 @@ public class Main {
                             String c = sc.nextLine();
                             construtor.add(c);
                         }
-                        System.out.println(construtor);
                         Pet pet = new Pet(construtor.get(0), Tipo.valueOf(construtor.get(1).toUpperCase()), Sexo.valueOf(construtor.get(2).toUpperCase()), construtor.get(3), construtor.get(4),
                                 construtor.get(5), construtor.get(6), construtor.get(7), construtor.get(8));
+                        Pet.addPet(pet);
                         salvarPet(pet);
                     }catch (IOException e){
                         e.printStackTrace();
                     }
                 }
                 if (opc == 4){
-                    Pet.toStringList(Pet.getAnimaisCadastrados());
+                    Pet.toStringList();
                 }
                 if (opc == 5 ){
                     buscaCriterios();

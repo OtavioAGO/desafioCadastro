@@ -4,7 +4,6 @@ import enums.Sexo;
 import enums.Tipo;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,7 +50,7 @@ public class Pet{
         this.raca = raca.trim().isEmpty() ? NAO_INFORMADO : raca;
     }
 
-    public void addPet(Pet pet){
+    public static void addPet(Pet pet){
         animaisCadastrados.add(pet);
     }
 
@@ -87,7 +86,7 @@ public class Pet{
     public String toString() {
         return "1 - "+nome+System.lineSeparator()+"2 - "+tipo+System.lineSeparator()+"3 - "+sexo+System.lineSeparator()+"4 - "+getEndereco()+System.lineSeparator()+"5 - "+getIdade()+System.lineSeparator()+"6 - "+getPeso()+System.lineSeparator()+"7 - "+getRaca();
     }
-    public static void toStringList(ArrayList<Pet> animaisCadastrados){
+    public static void toStringList(){
         for (Pet pet : animaisCadastrados){
             System.out.println((animaisCadastrados.indexOf(pet)+1)+". " +pet.getNome()+" - "+pet.getTipo()+" - "+pet.getSexo()+" - "+pet.getEndereco()+" - "+pet.getIdade()+" - "+pet.getPeso()+" - "+pet.getRaca());
         }
