@@ -60,8 +60,8 @@ public class Main {
                     Pet.toStringList(Pet.getAnimaisCadastrados());
                 }
                 if (opc == 5 ){
-                    ArrayList<Pet> petsFiltrados = new ArrayList<>();
-                }
+                    buscaCriterios();
+                    }
                 if (opc == 6){
                     break;
                 }
@@ -89,5 +89,72 @@ public class Main {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public static ArrayList<Pet> buscaCriterios(){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Pet> petsFiltrados = new ArrayList<>();
+        System.out.println("Qual o tipo do animal?\n1.Cachorro\n2.Gato");
+        int tipo = sc.nextInt();
+        sc.nextLine();
+        for (Pet pet : Pet.getAnimaisCadastrados()){
+            if (tipo == 1 && pet.getTipo().equalsIgnoreCase("Cachorro")){
+                petsFiltrados.add(pet);
+            }else if (tipo == 2 && pet.getTipo().equalsIgnoreCase("Gato")){
+                petsFiltrados.add(pet);
+            }
+        }
+        while (true){
+            System.out.println("Buscar por:\n1-Nome\n2-Sexo\n3-Idade\n4-Peso\n5-Raça\n6-Endereço");
+            int n = sc.nextInt();
+            int count = 0;
+            sc.nextLine();
+            switch (n){
+                case 1:
+                    System.out.println("Nome:");
+                    String nome = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getNome().toUpperCase().contains(nome.toUpperCase().trim()));
+                    break;
+                case 2:
+                    System.out.println("Sexo:");
+                    String sexo = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getSexo().equalsIgnoreCase(sexo));
+                    break;
+                case 3:
+                    System.out.println("Idade:");
+                    String idade = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getIdade().contains(idade));
+                    break;
+                case 4:
+                    System.out.println("Peso:");
+                    String peso = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getPeso().toUpperCase().contains(peso.toUpperCase()));
+                    break;
+                case 5:
+                    System.out.println("Raça:");
+                    String raca = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getRaca().toUpperCase().contains(raca.toUpperCase()));
+                    break;
+                case 6:
+                    System.out.println("Endereço:");
+                    String endereco = sc.nextLine();
+                    petsFiltrados.removeIf(pet -> !pet.getEndereco().toUpperCase().contains(endereco.toUpperCase()));
+                    break;
+                default:
+                    break;
+            }
+            count++;
+            if (count < 2){
+                System.out.println("1-Adicionar outro criterio\n2-Finalizar.");
+                n = sc.nextInt();
+                sc.nextLine();
+                if (n == 2){
+                    break;
+                }
+            }
+        }
+        for (Pet pet : petsFiltrados){
+            System.out.println((petsFiltrados.indexOf(pet)+1)+". " +pet.getNome()+" - "+pet.getTipo()+" - "+pet.getSexo()+" - "+pet.getEndereco()+" - "+pet.getIdade()+" - "+pet.getPeso()+" - "+pet.getRaca());
+        }
+        return petsFiltrados;
     }
 }

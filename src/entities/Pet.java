@@ -25,7 +25,7 @@ public class Pet{
     private final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public Pet(String nome, Tipo tipo, Sexo sexo, String rua, String numeroCasa, String cidade,  String idade, String peso, String raca) {
-        Pattern p = Pattern.compile("[\\W\\d]");
+        Pattern p = Pattern.compile("^[^A-Za-z\\s]+$");
         Matcher caractereEspecial = p.matcher(nome);
         if (caractereEspecial.find()) {
             throw new IllegalArgumentException("ERRO - Caractere invalido");
@@ -59,12 +59,12 @@ public class Pet{
         return nome;
     }
 
-    public Tipo getTipo() {
-        return tipo;
+    public String getTipo() {
+        return tipo.getType();
     }
 
-    public Sexo getSexo() {
-        return sexo;
+    public String getSexo() {
+        return sexo.toString();
     }
     public String getEndereco(){
         return rua +", " + numeroCasa + ", " + cidade;
