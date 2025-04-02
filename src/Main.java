@@ -6,6 +6,7 @@ import enums.Tipo;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.Collator;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -126,6 +127,8 @@ public class Main {
             }
         }
         while (true){
+            final Collator instance = Collator.getInstance();
+            instance.setStrength(Collator.PRIMARY);
             System.out.println("Buscar por:\n1-Nome\n2-Sexo\n3-Idade\n4-Peso\n5-Raça\n6-Endereço");
             int n = sc.nextInt();
             int count = 0;
@@ -134,12 +137,12 @@ public class Main {
                 case 1:
                     System.out.println("Nome:");
                     String nome = sc.nextLine();
-                    petsFiltrados.removeIf(pet -> !pet.getNome().toUpperCase().contains(nome.toUpperCase().trim()));
+                    petsFiltrados.removeIf(pet -> !instance.equals(pet.getNome(), nome.trim()));
                     break;
                 case 2:
                     System.out.println("Sexo:");
                     String sexo = sc.nextLine();
-                    petsFiltrados.removeIf(pet -> !pet.getSexo().equalsIgnoreCase(sexo));
+                    petsFiltrados.removeIf(pet -> !instance.equals(pet.getSexo(), sexo.trim()));
                     break;
                 case 3:
                     System.out.println("Idade:");
