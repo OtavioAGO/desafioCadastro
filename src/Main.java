@@ -22,7 +22,7 @@ public class Main {
                     System.out.println("Opção invalida.");
                     continue;
                 }
-                if (opc == 1){
+                else if (opc == 1){
                     try(BufferedReader bf = new BufferedReader(new FileReader("formulario.txt"))) {
                         String line;
                         ArrayList<String> construtor = new ArrayList<>();
@@ -56,13 +56,25 @@ public class Main {
                         e.printStackTrace();
                     }
                 }
-                if (opc == 4){
+                else if (opc == 2){
+                    ArrayList<Pet> petsFiltrados = buscaCriterios();
+                    int n = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println(petsFiltrados.size());
+
+                    Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
+                    if (pet != null){
+                        Pet.alteraPet(pet);
+                        salvarPet(pet);
+                    }
+                }
+                else if (opc == 4){
                     Pet.toStringList();
                 }
-                if (opc == 5 ){
+                else if (opc == 5 ){
                     buscaCriterios();
                     }
-                if (opc == 6){
+                else if (opc == 6){
                     break;
                 }
             } catch (Exception e){
