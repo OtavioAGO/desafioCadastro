@@ -68,6 +68,16 @@ public class Main {
                         salvarPet(pet);
                     }
                 }
+                else if (opc == 3){
+                    ArrayList<Pet> petsFiltrados = buscaCriterios();
+                    int n = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println(petsFiltrados.size());
+                    Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
+                    if (pet != null){
+                        Pet.removePet(pet);
+                    }
+                }
                 else if (opc == 4){
                     Pet.toStringList();
                 }

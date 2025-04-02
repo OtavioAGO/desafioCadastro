@@ -3,7 +3,6 @@ package entities;
 import enums.Sexo;
 import enums.Tipo;
 
-import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -50,7 +49,15 @@ public class Pet{
     public static void addPet(Pet pet){
         animaisCadastrados.add(pet);
     }
-
+    public static void removePet(Pet pet){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Tem certeza que deseja excluir o cadastro?(SIM/NÃO)");
+        String opc = sc.nextLine();
+        if (opc.equalsIgnoreCase("sim")){
+            animaisCadastrados.remove(pet);
+            System.out.println("Cadastro excluido com sucesso.");
+        }
+    }
     public static void alteraPet(Pet pet){
         int index = animaisCadastrados.indexOf(pet);
         Scanner sc = new Scanner(System.in);
