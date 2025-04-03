@@ -5,6 +5,7 @@ import enums.Tipo;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Collator;
@@ -194,11 +195,14 @@ public class Main {
         System.out.println("5.Sair");
     }
 
-    public static void salvarPet(Pet pet, ArrayList<String> array){
+    public static void salvarPet(Pet pet, ArrayList<String> array) throws IOException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
         LocalDateTime ldt = LocalDateTime.now();
         String data = dtf.format(ldt);
         String nomePasta = data+"-"+pet.getNome().toUpperCase().replace(" ", "")+".txt";
+        if (Files.notExists(Path.of("petsCadastrados"))){
+            Files.createDirectory(Path.of("petsCadastrados"));
+        }
         Path path = Paths.get("petsCadastrados\\" + nomePasta);
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(path.toString()))){
             bw.write(pet.toString());
