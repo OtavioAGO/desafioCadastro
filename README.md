@@ -12,7 +12,7 @@ Busquei utilizar a maioria dos principios de java para desenvolver esse projeto,
 ## Como executar
 Pelo IDE, basta executar normalmente.
 
-Pelo terminal:
-1.Abra o terminal na pasta desafioCadastro
-2.Compile com javac -d bin -cp src src/Main.java
-3.Execute com java -cp bin Main
+Pelo terminal:<br /> 
+1.Abra o terminal na pasta desafioCadastro<br /> 
+2.Compile com javac -d bin -cp src src/Main.java<br /> 
+3.Execute com java -cp bin Main<br /> 
