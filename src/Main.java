@@ -66,30 +66,42 @@ public class Main {
                         }
                         else if (opc == 2){
                             ArrayList<Pet> petsFiltrados = buscaCriterios();
-                            int n = sc.nextInt();
-                            sc.nextLine();
-                            System.out.println(petsFiltrados.size());
+                            if (petsFiltrados != null){
+                                int n = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println(petsFiltrados.size());
 
-                            Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
-                            if (pet != null){
-                                Pet.alteraPet(pet);
+                                Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
+                                if (pet != null){
+                                    Pet.alteraPet(pet);
+                                }
+                            }else{
+                                System.out.println("Nenhum pet encontrado.");
                             }
                         }
                         else if (opc == 3){
                             ArrayList<Pet> petsFiltrados = buscaCriterios();
-                            int n = sc.nextInt();
-                            sc.nextLine();
-                            System.out.println(petsFiltrados.size());
-                            Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
-                            if (pet != null){
-                                Pet.removePet(pet);
+                            if (petsFiltrados != null){
+                                int n = sc.nextInt();
+                                sc.nextLine();
+                                System.out.println(petsFiltrados.size());
+                                Pet pet = n <= petsFiltrados.size() ? petsFiltrados.get(n-1) : null;
+                                if (pet != null){
+                                    Pet.removePet(pet);
+                                }
+                            }else{
+                                System.out.println("Nenhum pet encontrado.");
                             }
                         }
                         else if (opc == 4){
                             Pet.toStringList();
                         }
                         else if (opc == 5 ){
-                            buscaCriterios();
+                            if (buscaCriterios().isEmpty()){
+                                System.out.println("Nenhum pet encontrado.");
+                            }else{
+                                System.out.println(buscaCriterios());
+                            }
                         }
                         else if (opc == 6){
                             menuInicial = false;
@@ -242,7 +254,7 @@ public class Main {
             instance.setStrength(Collator.PRIMARY);
             System.out.println("Buscar por:\n1-Nome\n2-Sexo\n3-Idade\n4-Peso\n5-Raça\n6-Endereço");
             int n = sc.nextInt();
-            int count = 0;
+            int count = 1;
             sc.nextLine();
             switch (n){
                 case 1:
@@ -279,7 +291,7 @@ public class Main {
                     break;
             }
             count++;
-            if (count < 2){
+            if (count <= 2){
                 System.out.println("1-Adicionar outro criterio\n2-Finalizar.");
                 n = sc.nextInt();
                 sc.nextLine();
@@ -287,6 +299,9 @@ public class Main {
                     break;
                 }
             }
+        }
+        if (petsFiltrados.isEmpty()){
+            return null;
         }
         for (Pet pet : petsFiltrados){
             System.out.println((petsFiltrados.indexOf(pet)+1)+". " +pet.getNome()+" - "+pet.getTipo()+" - "+pet.getSexo()+" - "+pet.getEndereco()+" - "+pet.getIdade()+" - "+pet.getPeso()+" - "+pet.getRaca());
