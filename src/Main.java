@@ -97,10 +97,8 @@ public class Main {
                             Pet.toStringList();
                         }
                         else if (opc == 5 ){
-                            if (buscaCriterios().isEmpty()){
+                            if (buscaCriterios() == null){
                                 System.out.println("Nenhum pet encontrado.");
-                            }else{
-                                System.out.println(buscaCriterios());
                             }
                         }
                         else if (opc == 6){
