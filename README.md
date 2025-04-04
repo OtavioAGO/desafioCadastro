@@ -10,4 +10,9 @@ Projeto feito a partir do [Desafio proposto por Lucas Carrilho ](https://github.
 Busquei utilizar a maioria dos principios de java para desenvolver esse projeto, porém os mais práticados foram a manipulação de arquivos e arrays.
 
 ## Como executar
-Basta executar o arquivo main na IDE ou no terminal.
+Pelo IDE, basta executar normalmente.
+
+Pelo terminal:<br /> 
+1.Abra o terminal na pasta desafioCadastro<br /> 
+2.Compile com javac -d bin -cp src src/Main.java<br /> 
+3.Execute com java -cp bin Main<br /> 
