@@ -4,7 +4,6 @@ import enums.Sexo;
 import enums.Tipo;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,6 +23,7 @@ public class Main {
             sc.nextLine();
             if (m == 1){
                 while (true){
+                    System.out.println();
                     exibeMenu();
                     try {
                         int opc = Integer.parseInt(sc.nextLine());
