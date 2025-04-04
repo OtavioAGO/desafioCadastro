@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85e617b4-a3cf-4a23-9322-90d56acf1e40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formulario.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/formulario.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/formulario.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +52,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\otavi\IdeaProjects\desafioCadastro\src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -95,7 +99,7 @@
       <workItem from="1743614870652" duration="2013000" />
       <workItem from="1743699519826" duration="4544000" />
       <workItem from="1743704128947" duration="392000" />
-      <workItem from="1743797383218" duration="800000" />
+      <workItem from="1743797383218" duration="1778000" />
     </task>
     <servers />
   </component>
